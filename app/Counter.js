@@ -4,7 +4,8 @@ import {
   View, 
   Text,
   StyleSheet,
-  Button
+  Button,
+  TouchableOpacity,
 } from 'react-native';
 
 class Counter extends Component {
@@ -22,9 +23,18 @@ class Counter extends Component {
   render() {
     return(
       <View style = {styles.counter}>
-        <Button color = "tomato" title="-" onPress={this.onclick.bind(this, 'sub')}> </Button>
-        <Text> {this.state.count} </Text>
-        <Button color = "lightgreen" title="+" onPress={this.onclick.bind(this, 'add')}> </Button>
+        <Text style={styles.elementText}> {this.props.element} </Text>
+          <TouchableOpacity style={styles.subbutton} 
+            onPress={this.onclick.bind(this, 'sub')}>
+            <Text style={styles.text}> - </Text>
+          </TouchableOpacity>
+
+          <Text style={styles.text}> {this.state.count} </Text>
+
+          <TouchableOpacity style={styles.addbutton} 
+            onPress={this.onclick.bind(this, 'add')}>
+            <Text> + </Text>
+          </TouchableOpacity>
       </View>
     );
   }
@@ -34,6 +44,29 @@ const styles = StyleSheet.create({
   counter: {
     flexDirection: 'row',
     padding: 5,
+    alignItems: 'center',
+  },
+  text:{
+    fontSize: 20,
+  },
+  addbutton: {
+    backgroundColor: 'lightgreen',
+    borderRadius: 12,
+    width: 24,
+    height: 24,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  subbutton: {
+    backgroundColor: 'tomato',
+    borderRadius: 12,
+    width: 24,
+    height: 24,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  elementText:{
+    fontSize: 20,
   },
 });
 export default Counter;

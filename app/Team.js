@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import Counter from './Counter.js';
 import {NavigationActions} from 'react-navigation';
+import Rating from './Rating.js';
 
 class Team extends Component {
 
@@ -28,7 +29,7 @@ class Team extends Component {
       <TouchableOpacity style={styles.threadContainer} onPress = {()=>this._next()}> 
         <Text style = {styles.threadTeam}> {this.props.num} </Text>
         <Text> {this.props.name}</Text>
-        <Counter/>
+        <Text>  </Text>
       </TouchableOpacity>
     );
   }
@@ -41,7 +42,7 @@ Team.navigationOptions = {
 const styles = StyleSheet.create({
   threadContainer: {
     padding: 2,
-    borderWidth: 1,
+    borderWidth: .5,
   },
 
   threadTeam: {

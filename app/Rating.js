@@ -3,7 +3,11 @@ import {
   AppRegistry, 
   Button, 
   View,
-  StyleSheet
+  StyleSheet,
+  TouchableHighlight,
+  TouchableOpacity,
+  Text,
+  Dimensions,
 } from 'react-native';
 
 class Rating extends Component {
@@ -14,24 +18,45 @@ class Rating extends Component {
     };  
   }
 
-  onclick(type){
-    if(type === 'low'){
-      this.setState({rating: 'low'});
-    }
-    else if(type === 'med'){
-      this.setState({rating: 'med'});
-    }
-    else if(type === 'high'){
-      this.setState({rating: 'high'});
-    }
-  }
-
   render(){
     return(
       <View style={styles.rating}>
-        <Button color = "powderblue" title="Low" onPress={this.onclick.bind(this, 'low')}> </Button>
-        <Button color = "skyblue" title="Med" onPress={this.onclick.bind(this, 'med')}> </Button>
-        <Button color = "steelblue" title="High" onPress={this.onclick.bind(this, 'high')}> </Button>
+        <Text style={styles.elementText}> {this.props.element} </Text>
+            <TouchableOpacity 
+              style={{
+                backgroundColor: (this.state.rating==='low')?'lightblue':'lightgrey',
+                borderWidth: 5,
+                borderRadius: 100,
+                borderColor: (this.state.rating==='low')?'lightblue':'lightgrey',
+                margin: 3,
+              }}
+              onPress={ () => this.setState({rating: 'low'})}>
+              <Text style={styles.buttonText}> LOW </Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity 
+              style={{
+                backgroundColor: (this.state.rating==='med')?'lightblue':'lightgrey',
+                borderWidth: 5,
+                borderRadius: 100,
+                borderColor: (this.state.rating==='med')?'lightblue':'lightgrey',
+                margin: 3,
+              }}
+              onPress={ () => this.setState({rating: 'med'})}>
+              <Text style={styles.buttonText}> MED </Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity 
+              style={{
+                backgroundColor: (this.state.rating==='high')?'lightblue':'lightgrey',
+                borderWidth: 5,
+                borderRadius: 100,
+                borderColor: (this.state.rating==='high')?'lightblue':'lightgrey',
+                margin: 3,
+              }}
+              onPress={ () => this.setState({rating: 'high'})}>
+              <Text style={styles.buttonText}> HIGH </Text>
+          </TouchableOpacity>
       </View>
     );
   }
@@ -42,6 +67,18 @@ const styles = StyleSheet.create({
   rating: {
     flexDirection: 'row',
     padding: 5,
+  },
+  button: {
+    backgroundColor: 'lightgrey',
+    borderWidth: 5,
+    borderRadius: 100,
+    borderColor: 'lightgrey',
+    margin: 3,
+  },
+  buttonText:{
+  },
+  elementText:{
+    fontSize: 20,
   },
 });
 

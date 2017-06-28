@@ -11,6 +11,7 @@ import {
   TouchableHighlight,
  } from 'react-native';
 import {NavigationActions} from 'react-navigation';
+import Autonomous from './Autonomous.js';
 
  class newTeamScreen extends Component{
    constructor() {
@@ -50,28 +51,37 @@ import {NavigationActions} from 'react-navigation';
     render(){
         const {params} = this.props.navigation.state;
         return(
-            <View style = {styles.container}>
-                <TextInput
-                    style = {styles.input}
-                    placeholder = 'Name'
-                    autoCapitalize = 'none'
-                    autoCorrect = {false}
-                    onChangeText = {(name)=>this.setState({name})}
-                />
-                <TextInput
-                    style = {styles.input}
-                    placeholder = 'Number'
-                    autoCapitalize = 'none'
-                    autoCorrect = {false}
-                    onChangeText = {(num)=>this.setState({num})}
-                />
+            <View> 
+                <Text style={{marginTop: 10, fontWeight: 'bold', fontSize: 20, backgroundColor:'lightgrey'}}> 
+                    Team Info 
+                </Text>
+
+                <View style={{flexDirection: 'row'}}>
+                    <TextInput
+                        style={{width: Dimensions.get("window").width * .5}}
+                        placeholder = 'Name'
+                        autoCapitalize = 'none'
+                        autoCorrect = {false}
+                        onChangeText = {(name)=>this.setState({name})}
+                    />
+                    <TextInput
+                        style={{width: Dimensions.get("window").width * .5}}
+                        placeholder = 'Number'
+                        autoCapitalize = 'none'
+                        autoCorrect = {false}
+                        onChangeText = {(num)=>this.setState({num})}
+                    />
+                </View>
+
+                <Autonomous/>
+
                 <TouchableHighlight
                     style = {styles.submit}
+                    underlayColor={"grey"}
                     onPress = {()=>{
                         this.handleTeamAdd();
                         this._top();
                     }}>
-
                     <Text>Submit</Text>
                 </TouchableHighlight> 
 
@@ -95,6 +105,7 @@ const styles = StyleSheet.create({
       width: Dimensions.get("window").width * .5,
       justifyContent: 'center',
       alignItems: 'center',
+      left: Dimensions.get("window").width/4,
    },
 
 });
