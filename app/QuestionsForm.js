@@ -6,6 +6,8 @@ import {
   TouchableOpacity,
   Text,
   Dimensions,
+  ScrollView,
+  TouchableHighlight,
  } from 'react-native';
  import {NavigationActions} from 'react-navigation';
  import NewGameElement from './NewGameElement.js';
@@ -13,39 +15,74 @@ import {
  class QuestionsForm extends Component{
 
     _back(){
-        //this.props.dispatch in the main function that literally activates/runs the action you give it
-        //In this case we are going back one page
         this.props.navigation.dispatch(NavigationActions.back());
     }
 
-
-//This navigates back to the initial page 
     _top(){
-        //Same dispatch function from before
         this.props.navigation.dispatch(
-
-            //in this case were running the action "reset"
             NavigationActions.reset({
-                //this is the index of the page we want to go to 
-                //it can be anything but in this case we want to go to the start
                 index: 0,
-
-                //this is what action we want to do 
-                //we are navigating to the first page but we have to do this inside the reset function or else it would add the page to the navigator stack instead of going back to the first one
-                //idk what else you can do in here but ik this works
                 actions: [
-                    //routeName has to be the ReferenceName of the page you are going to 
                     NavigationActions.navigate({routeName: 'Home'})
                 ]
              })
         );
     }
 
+    handleSubmit(){
+
+    }
+
+    static questions = [];
+
     render(){
         return(
             <View style = {styles.container}>
-                <Text style={{marginTop: 10, fontWeight: 'bold', fontSize: 20, backgroundColor: 'lightgrey'}}> Autonomous </Text>
-                <NewGameElement/>
+                <ScrollView>
+                    <View style={{flexDirection: 'row'}}>
+                        <Text style={styles.text}> Autonomous </Text>
+                            <TouchableOpacity style={styles.addQuestionButton} 
+                                onPress={ () => {
+                                    return( <NewGameElement/> );
+                                    }}>
+                                <Text style ={{fontWeight: 'bold', fontSize: 30}}> + </Text>
+                            </TouchableOpacity>
+                    </View>
+                    <NewGameElement/>
+
+                    <View style={{flexDirection: 'row'}}>
+                        <Text style={styles.text}> Tele-Op </Text>
+                            <TouchableOpacity style={styles.addQuestionButton} 
+                                onPress={ () => {
+                                    return( <NewGameElement/> );
+                                    }}>
+                                <Text style ={{fontWeight: 'bold', fontSize: 30}}> + </Text>
+                            </TouchableOpacity>
+                    </View>
+                    <NewGameElement/>
+
+                    <View style={{flexDirection: 'row'}}>
+                        <Text style={styles.text}> End Game </Text>
+                            <TouchableOpacity style={styles.addQuestionButton} 
+                                onPress={ () => {
+                                    return( <NewGameElement/> );
+                                    }}>
+                                <Text style ={{fontWeight: 'bold', fontSize: 30}}> + </Text>
+                            </TouchableOpacity>
+                    </View>
+                    <NewGameElement/>
+
+                    <TouchableHighlight
+                        style = {styles.submit}
+                        underlayColor={"grey"}
+                        onPress = {()=>{
+                            this.handleSubmit();
+                            this._top();
+                        }}>
+                        <Text>Submit</Text>
+                    </TouchableHighlight> 
+
+                </ScrollView>
             </View>
         );
      }
@@ -62,31 +99,34 @@ const styles = StyleSheet.create({
 
     container:{
         flex: 1, 
-        flexDirection: 'column',
+        flexDirection: 'row',
     },
 
-    text:{
-        fontWeight: '100',
-        fontSize: 40,
-        textAlign: 'center',
-        paddingVertical: 100,
+    text: {
+        marginTop: 10, 
+        fontWeight: 'bold', 
+        fontSize: 30, 
+        backgroundColor: 'lightgrey', 
+        width: Dimensions.get("window").width * .5,
     },
 
-    button:{
+    addQuestionButton: {
+        backgroundColor: 'lightgrey',
         justifyContent: 'center',
         alignItems: 'center',
-        width: Dimensions.get("window").width,
-        height: 50,
-        marginVertical: 5,
-        backgroundColor: 'grey',
+        height: 40,
+        width: Dimensions.get("window").width/2, 
+        marginTop: 10,
     },
 
-    buttonText:{
-        fontWeight: '100',
-        fontSize: 20,
-        textAlign: 'center',
-        color: 'white',
-    },
+    submit: {
+      backgroundColor: 'silver',
+      padding: 10,
+      width: Dimensions.get("window").width * .5,
+      justifyContent: 'center',
+      alignItems: 'center',
+      left: Dimensions.get("window").width/4,
+   },
 });
 
  export default QuestionsForm;

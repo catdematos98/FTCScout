@@ -12,7 +12,7 @@ class NewGameElement extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      dataType: ' ',
+      dataType: '',
       value: '',
     };  
   }

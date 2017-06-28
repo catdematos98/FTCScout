@@ -23,20 +23,10 @@ import Autonomous from './Autonomous.js';
    }
 
     _top(){
-        //Same dispatch function from before
         this.props.navigation.dispatch(
-
-            //in this case were running the action "reset"
             NavigationActions.reset({
-                //this is the index of the page we want to go to 
-                //it can be anything but in this case we want to go to the start
                 index: 0,
-
-                //this is what action we want to do 
-                //we are navigating to the first page but we have to do this inside the reset function or else it would add the page to the navigator stack instead of going back to the first one
-                //idk what else you can do in here but ik this works
                 actions: [
-                    //routeName has to be the ReferenceName of the page you are going to 
                     NavigationActions.navigate({routeName: 'Home'})
                 ]
              })

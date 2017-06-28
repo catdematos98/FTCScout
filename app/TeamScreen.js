@@ -51,20 +51,7 @@ import {NavigationActions} from 'react-navigation';
         const {params} = this.props.navigation.state;
         return(
             <View style = {styles.container}>
-                <Text style={styles.text}>This is {params.name} </Text>
-
-                <TouchableOpacity style={styles.button} onPress={() => this._next()}> 
-                    <Text style={styles.buttonText}>Next Page</Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity style={styles.button} onPress={() => this._back()}> 
-                    <Text style={styles.buttonText}>Go Back</Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity style={styles.button} onPress={() => this._top()}> 
-                    <Text style={styles.buttonText}>Go Home</Text>
-                </TouchableOpacity>
-
+                <Text style={styles.text}> {params.name} </Text>
             </View>
         );
      }
@@ -74,7 +61,7 @@ import {NavigationActions} from 'react-navigation';
 //it has to be the same name as your class
 //{CLASSNAME}.navigationOptions = {}
 TeamScreen.navigationOptions = {
-    title: 'Team Screen',
+    title: 'Team Stats',
 }
 
 const styles = StyleSheet.create({
@@ -84,7 +71,6 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'lightblue',
     },
 
     text:{
