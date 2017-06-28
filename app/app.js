@@ -33,6 +33,7 @@ class App extends Component {
   render() {
     let teamList = TeamList.list;
     return (
+      
         <View style={styles.container}>
             {this.state.searchVisible === true &&
                   <SearchBar 
@@ -42,7 +43,7 @@ class App extends Component {
                     showOnLoad
                   />
             }  
-          <ScrollView style={styles.scroll}>
+          <ScrollView style={styles.scroll}> 
 
             {teamList.map((team)=> {
               return <Team 
@@ -62,6 +63,13 @@ class App extends Component {
           </ScrollView>
 
           <View style={{flexDirection: 'row'}}>
+            <TouchableOpacity style={styles.formButton}
+              onPress={() => this.props.navigation.navigate('QuestionsForm', {
+                handleTeamAdd: (team) => {teamList.push(team)}
+                })}>
+                <Text style={styles.buttonText}> <Icon name="wpforms" color="white" size={30}/> </Text>
+            </TouchableOpacity>  
+
             <TouchableOpacity style={styles.addTeamButton}
               onPress={() => {
                 this.setState({searchVisible: !this.state.searchVisible})
@@ -75,7 +83,7 @@ class App extends Component {
                 })}>
                 <Text style={styles.buttonText}> + </Text>
             </TouchableOpacity>
-          </View>       
+          </View>      
         </View>
     );
   }
@@ -105,7 +113,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     margin: 4,
   },
-
+  formButton: {
+    backgroundColor: 'grey',
+    borderRadius: 30,
+    width: 60,
+    height: 60,
+    left: Dimensions.get("window").width/2 - 90,
+    bottom: 91,
+    alignItems: 'center',
+    justifyContent: 'center',
+    margin: 4,
+  },
   buttonText: {
     color: 'white',
     fontWeight: 'bold',

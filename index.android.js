@@ -9,6 +9,7 @@ import TeamScreen from './app/TeamScreen.js';
 import Team from './app/Team.js';
 import Screen4 from './app/Screen4.js';
 import RandomScreenFromImports from './app/Screen4.js';
+import QuestionsForm from './app/QuestionsForm.js';
 
 //This is where you declare all the pages you want to be able to navigate to
 //This does not make your navigation stack it just makes them availbe to referance later when you want to navigate to them
@@ -24,6 +25,7 @@ const MyApp = StackNavigator({
   Team: {screen: Team},
   newTeamScreen: {screen: newTeamScreen},
   Screen4: {screen: Screen4},
+  QuestionsForm: {screen: QuestionsForm},
 
 //example to try and clear things up
   ThisIsMyReferenceName: {screen: RandomScreenFromImports},
