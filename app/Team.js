@@ -29,7 +29,7 @@ class Team extends Component {
       <TouchableOpacity style={styles.threadContainer} onPress = {()=>this._next()}> 
         <Text style = {styles.threadTeam}> {this.props.num} </Text>
         <Text> {this.props.name}</Text>
-        <Text>  </Text>
+        <Text> {this.props.Parking}</Text>
       </TouchableOpacity>
     );
   }

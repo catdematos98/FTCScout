@@ -23,18 +23,16 @@ class App extends Component {
       results: [],
     };
   }
-  
 
   _handleResults(results) {
-    this.setState({ results });
+   // this.setState({ results });
   }
-
 
   render() {
     let teamList = TeamList.list;
     return (
-      
         <View style={styles.container}>
+    
             {this.state.searchVisible === true &&
                   <SearchBar 
                     ref={(ref) => this.searchBar = ref}
@@ -43,6 +41,7 @@ class App extends Component {
                     showOnLoad
                   />
             }  
+
           <ScrollView style={styles.scroll}> 
 
             {teamList.map((team)=> {
@@ -50,7 +49,9 @@ class App extends Component {
                 navigation={this.props.navigation} 
                 name={team.name} 
                 num={team.num}
-                key={Math.floor((Math.random()*1000) +1)}/>
+                Parking={team.Parking}
+                key={Math.floor((Math.random()*1000) +1)}
+                />
             })}
 
             {TeamList.list.length === 0 &&
@@ -72,7 +73,12 @@ class App extends Component {
 
             <TouchableOpacity style={styles.addTeamButton}
               onPress={() => {
-                this.setState({searchVisible: !this.state.searchVisible})
+                if (TeamList.list.length === 0){
+                  alert('\t You do not have to search through yet! \n\t\t\t Add teams using the + button!')
+                }
+                else{
+                  this.setState({searchVisible: !this.state.searchVisible})
+                }
               }}>
                 <Text style={styles.buttonText}> <Icon name="search" color="white" size={30}/> </Text>
             </TouchableOpacity>
@@ -89,12 +95,8 @@ class App extends Component {
   }
 }
 
-//This is the title that appears on the top
-//it has to be the same name as your class
-//{CLASSNAME}.navigationOptions = {}
 App.navigationOptions = {
-    title: 'Teams',
-    
+    title: 'Teams', 
 };
 
 const styles = StyleSheet.create({
@@ -107,7 +109,7 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     width: 60,
     height: 60,
-    left: Dimensions.get("window").width/2 - 90,
+    left: Dimensions.get("window").width/2 - 120,
     bottom: 91,
     alignItems: 'center',
     justifyContent: 'center',
@@ -118,7 +120,7 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     width: 60,
     height: 60,
-    left: Dimensions.get("window").width/2 - 90,
+    left: Dimensions.get("window").width/2 - 120,
     bottom: 91,
     alignItems: 'center',
     justifyContent: 'center',

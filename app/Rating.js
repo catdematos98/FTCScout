@@ -68,13 +68,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     padding: 5,
   },
-  button: {
-    backgroundColor: 'lightgrey',
-    borderWidth: 5,
-    borderRadius: 100,
-    borderColor: 'lightgrey',
-    margin: 3,
-  },
   buttonText:{
   },
   elementText:{

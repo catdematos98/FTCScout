@@ -13,12 +13,12 @@ class NewGameElement extends Component {
     super(props);
     this.state = {
       dataType: '',
-      value: '',
+      elementName: '',
     };  
   }
 
-  updateValue = (text) => {
-    this.setState({value: text})
+  updateElementName = (text) => {
+    this.setState({elementName: text})
   }
   render(){
     return(
@@ -27,7 +27,7 @@ class NewGameElement extends Component {
             style = {{width: Dimensions.get("window").width * .5}}
             placeholder = 'Input Game Element'
             autoCapitalize = 'none'
-            onChangeText = {this.props.updateValue}
+            onChangeText = {this.props.updateElementName}
           />  
           <Picker
             style={{width: Dimensions.get("window").width * .5}}
@@ -37,8 +37,8 @@ class NewGameElement extends Component {
                 }
               }
             >
-            <Picker.Item label="Rating" value="lowMedHigh" />
-            <Picker.Item label="Counter" value="counter" />
+            <Picker.Item label="Rating" elementName="rating" />
+            <Picker.Item label="Counter" elementName="counter" />
           </Picker>
         </View>
     );

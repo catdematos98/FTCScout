@@ -13,34 +13,19 @@ import {NavigationActions} from 'react-navigation';
  class TeamScreen extends Component{
 
     _next(){
-        //This adds/goes to a page to your navigation stack 
-        //The string is the same as your screens "ReferenceName" that you stated in index.android.js
         this.props.navigation.navigate('Screen4', {/*Passing Data*/ teamName: 'Locomotors'});
     }
 
    _back(){
-        //this.props.dispatch in the main function that literally activates/runs the action you give it
-        //In this case we are going back one page
         this.props.navigation.dispatch(NavigationActions.back());
     }
 
 
-    //This navigates back to the initial page 
     _top(){
-        //Same dispatch function from before
         this.props.navigation.dispatch(
-
-            //in this case were running the action "reset"
             NavigationActions.reset({
-                //this is the index of the page we want to go to 
-                //it can be anything but in this case we want to go to the start
                 index: 0,
-
-                //this is what action we want to do 
-                //we are navigating to the first page but we have to do this inside the reset function or else it would add the page to the navigator stack instead of going back to the first one
-                //idk what else you can do in here but ik this works
                 actions: [
-                    //routeName has to be the ReferenceName of the page you are going to 
                     NavigationActions.navigate({routeName: 'Home'})
                 ]
              })
@@ -57,9 +42,6 @@ import {NavigationActions} from 'react-navigation';
      }
  }
 
-//This is the title that appears on the top
-//it has to be the same name as your class
-//{CLASSNAME}.navigationOptions = {}
 TeamScreen.navigationOptions = {
     title: 'Team Stats',
 }

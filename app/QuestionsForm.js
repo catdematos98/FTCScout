@@ -33,6 +33,12 @@ import {
 
     }
 
+    handleClick(){
+        return (
+            <NewGameElement/>
+        );
+    }
+
     static questions = [];
 
     render(){
@@ -48,7 +54,6 @@ import {
                                 <Text style ={{fontWeight: 'bold', fontSize: 30}}> + </Text>
                             </TouchableOpacity>
                     </View>
-                    <NewGameElement/>
 
                     <View style={{flexDirection: 'row'}}>
                         <Text style={styles.text}> Tele-Op </Text>
@@ -59,20 +64,17 @@ import {
                                 <Text style ={{fontWeight: 'bold', fontSize: 30}}> + </Text>
                             </TouchableOpacity>
                     </View>
-                    <NewGameElement/>
 
                     <View style={{flexDirection: 'row'}}>
                         <Text style={styles.text}> End Game </Text>
-                            <TouchableOpacity style={styles.addQuestionButton} 
-                                onPress={ () => {
-                                    return( <NewGameElement/> );
-                                    }}>
+                            <TouchableHighlight style={styles.addQuestionButton} 
+                             underlayColor={"silver"}
+                                onPress={this.handleClick}>
                                 <Text style ={{fontWeight: 'bold', fontSize: 30}}> + </Text>
-                            </TouchableOpacity>
+                            </TouchableHighlight>
                     </View>
-                    <NewGameElement/>
 
-                    <TouchableHighlight
+                    {/*<TouchableHighlight
                         style = {styles.submit}
                         underlayColor={"grey"}
                         onPress = {()=>{
@@ -80,7 +82,7 @@ import {
                             this._top();
                         }}>
                         <Text>Submit</Text>
-                    </TouchableHighlight> 
+                    </TouchableHighlight> */}
 
                 </ScrollView>
             </View>
@@ -115,7 +117,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         height: 40,
-        width: Dimensions.get("window").width/2, 
+        width: Dimensions.get("window").width/4,
         marginTop: 10,
     },
 

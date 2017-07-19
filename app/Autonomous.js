@@ -22,15 +22,13 @@ class Autonomous extends Component {
   render(){
     return(
         <View>
-            <Text style={{marginTop: 10, fontWeight: 'bold', fontSize: 20, backgroundColor: 'lightgrey'}}> Autonomous </Text> 
+            <Text style={{
+                marginTop: 10, 
+                fontWeight: 'bold', 
+                fontSize: 25, 
+                backgroundColor:'lightgrey'}}
+            > Autonomous </Text> 
                 <Rating element="Parking"/>
-                <Counter element="Particles"/>
-            <Text style={{marginTop: 10, fontWeight: 'bold', fontSize: 20, backgroundColor: 'lightgrey'}}> Tele-Op </Text>
-                <Rating/>
-                <Counter/>
-            <Text style={{marginTop: 10, fontWeight: 'bold', fontSize: 20, backgroundColor: 'lightgrey'}}> End Game </Text>
-                <Rating element="dksjfhdskjfhksd"/>
-                <Counter/>
         </View>
     );
   }
