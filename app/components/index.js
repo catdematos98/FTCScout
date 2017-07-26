@@ -3,7 +3,7 @@ class TeamList {
     {
       name: '//Cougars',
       num: '11248',
-      Parking: 'low',
+      Parking: 'high',
     },
     {
       name: 'Chatham Cougars',

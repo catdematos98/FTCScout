@@ -28,6 +28,8 @@ const styles = StyleSheet.create({
   },
 });
 
+const TeamList = require('./index');
+
 class newTeamScreen extends Component {
   constructor() {
     super();
@@ -35,7 +37,22 @@ class newTeamScreen extends Component {
       name: '',
       num: '',
       Parking: 'low',
+      teamList: TeamList.list,
     };
+  }
+
+  // saveTeams() {
+  //   const stringifiedTeams = JSON.stringify(this.state.teamList);
+  //   AsyncStorage.setItem('Teams', stringifiedTeams);
+  //   this.setState({ teams: stringifiedTeams });
+  // }
+
+  handleTeamAdd() {
+    const { params } = this.props.navigation.state;
+    params.handleTeamAdd({
+      name: this.state.name,
+      num: this.state.num,
+    });
   }
 
   top() {
@@ -49,18 +66,11 @@ class newTeamScreen extends Component {
     );
   }
 
-  handleTeamAdd() {
-    const { params } = this.props.navigation.state;
-    params.handleTeamAdd({
-      name: this.state.name,
-      num: this.state.num,
-    });
-  }
-
   render() {
     return (
       <ScrollView>
         <View>
+          {/* {Alert.alert(this.state.teams)} */}
           <Text style={styles.titleText}>
                   Team Info
           </Text>

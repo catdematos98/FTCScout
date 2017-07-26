@@ -3,7 +3,6 @@ import {
   Text,
   StyleSheet,
   TouchableOpacity,
-  Alert,
 } from 'react-native';
 // import { NavigationActions } from 'react-navigation';
 
@@ -29,10 +28,14 @@ class Team extends Component {
 
   render() {
     return (
-      <TouchableOpacity style={styles.threadContainer} onPress={() => this.next()}>
+      <TouchableOpacity
+        style={styles.threadContainer}
+        onPress={() => this.next()}
+        onLongPress={this.props.onLongPress}
+      >
         <Text style={styles.threadTeam}> {this.props.num} </Text>
         <Text> {this.props.name}</Text>
-        <Text> {this.props.Parking}</Text>
+        {/* <Text> {this.props.Parking}</Text>*/}
       </TouchableOpacity>
     );
   }
@@ -45,7 +48,8 @@ Team.navigationOptions = {
 Team.propTypes = {
   name: PropTypes.string.isRequired,
   num: PropTypes.string.isRequired,
-  Parking: PropTypes.string.isRequired,
+  // Parking: PropTypes.string.isRequired,
+  onLongPress: PropTypes.func.isRequired,
   navigation: PropTypes.object.isRequired,
 };
 
