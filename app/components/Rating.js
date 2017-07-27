@@ -4,7 +4,11 @@ import {
   StyleSheet,
   TouchableOpacity,
   Text,
+  Alert,
 } from 'react-native';
+import {connect} from 'react-redux';
+
+import * as actions from '../actions/actions';
 
 const styles = StyleSheet.create({
   rating: {
@@ -26,6 +30,11 @@ class Rating extends Component {
     };
   }
 
+  handleClick = (value) => {
+    Alert.alert(value);
+    dispatch(actions.setRatingValue(value));
+  }
+
   render() {
     return (
       <View style={styles.rating}>
@@ -38,7 +47,7 @@ class Rating extends Component {
             borderColor: (this.state.rating === 'low') ? 'lightblue' : 'lightgrey',
             margin: 3,
           }}
-          onPress={() => this.setState({ rating: 'low' })}
+          onPress={() => this.handleClick('low')}
         >
           <Text style={styles.buttonText}> LOW </Text>
         </TouchableOpacity>
@@ -77,4 +86,4 @@ Rating.propTypes = {
   element: PropTypes.string.isRequired,
 };
 
-export default Rating;
+export default connect()(Rating);

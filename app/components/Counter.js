@@ -1,19 +1,28 @@
 import React, { Component, PropTypes } from 'react';
 import {
-  View,
-  Text,
-  StyleSheet,
   TouchableOpacity,
+  StyleSheet,
+  Text,
+  View,
 } from 'react-native';
 
 const styles = StyleSheet.create({
   counter: {
+    // padding: 30,
+    // alignSelf: 'center',
+    // fontSize: 26,
+    // fontWeight: 'bold',
     flexDirection: 'row',
     padding: 5,
     alignItems: 'center',
   },
   text: {
     fontSize: 20,
+  },
+  textCounter: {
+    fontSize: 20,
+    paddingLeft: 5,
+    paddingRight: 5,
   },
   addbutton: {
     backgroundColor: 'lightgreen',
@@ -33,39 +42,33 @@ const styles = StyleSheet.create({
   },
   elementText: {
     fontSize: 20,
+    paddingLeft: 5,
+    paddingRight: 5,
   },
 });
 
-class Counter extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { count: 0 };
-  }
-
-  onclick(type) {
-    this.setState({
-      count: type === 'add' ? this.state.count + 1 : this.state.count - 1,
-    });
-  }
-
+export default class Counter extends Component {
   render() {
     return (
       <View style={styles.counter}>
         <Text style={styles.elementText}> {this.props.element} </Text>
         <TouchableOpacity
           style={styles.subbutton}
-          onPress={this.onclick.bind(this, 'sub')}
+          onPress={this.props.decrement}
         >
           <Text style={styles.text}> - </Text>
         </TouchableOpacity>
-
-        <Text style={styles.text}> {this.state.count} </Text>
-
+        <Text
+          style={styles.textCounter}
+          onPress={this.props.reset}
+        >
+          {this.props.count}
+        </Text>
         <TouchableOpacity
           style={styles.addbutton}
-          onPress={this.onclick.bind(this, 'add')}
+          onPress={this.props.increment}
         >
-          <Text> + </Text>
+          <Text style={styles.text}> + </Text>
         </TouchableOpacity>
       </View>
     );
@@ -73,7 +76,12 @@ class Counter extends Component {
 }
 
 Counter.propTypes = {
+  // Redux
+  increment: PropTypes.func.isRequired,
+  reset: PropTypes.func.isRequired,
+  decrement: PropTypes.func.isRequired,
+  count: PropTypes.number.isRequired,
+  // React
   element: PropTypes.string.isRequired,
 };
 
-export default Counter;

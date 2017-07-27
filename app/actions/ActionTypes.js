@@ -1,0 +1,1 @@
+// export const SET_RATING_VALUE = 'SET_RATING_VALUE';

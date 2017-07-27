@@ -9,7 +9,7 @@ import {
   ScrollView,
  } from 'react-native';
 import { NavigationActions } from 'react-navigation';
-import Autonomous from './Autonomous';
+import PreFill from './PreFill';
 
 const styles = StyleSheet.create({
   submit: {
@@ -90,7 +90,9 @@ class newTeamScreen extends Component {
               onChangeText={num => this.setState({ num })}
             />
           </View>
-          <Autonomous />
+
+          <PreFill />
+
           <TouchableHighlight
             style={styles.submit}
             underlayColor={'grey'}

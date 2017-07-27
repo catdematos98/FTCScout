@@ -18,5 +18,6 @@ module.exports = {
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
         "react/forbid-prop-types": "off",
         "react/jsx-no-bind": "off",
+        "react/require-default-props": "off",
     }
 };
